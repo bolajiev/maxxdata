@@ -1,5 +1,6 @@
 # Maxx research agent — V1 sources (expand in v2)
-# Separate HF datasets from coding — never mix agents
+# US federal sites (EPA, NASA, CDC, NIH/NLM) are public information — allowed_domains below.
+# Use reasonable rate limits; check robots.txt for each site in production.
 
 fetch_urls: true
 

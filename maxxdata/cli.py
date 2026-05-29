@@ -5,17 +5,6 @@ from __future__ import annotations
 import click
 from rich.console import Console
 
-from maxxdata.stages.approve import run_approve
-from maxxdata.stages.chunk_rag import run_chunk_rag
-from maxxdata.stages.clean import run_clean
-from maxxdata.stages.ingest import run_ingest
-from maxxdata.stages.export_hf import run_export_hf
-from maxxdata.stages.seed_ft import run_seed_ft
-from maxxdata.stages.inventory import run_inventory_status
-from maxxdata.stages.label import run_label
-from maxxdata.stages.promote import run_promote
-from maxxdata.stages.validate import run_validate
-
 console = Console()
 
 
@@ -30,6 +19,8 @@ def main() -> None:
 @click.option("--batch", required=True, help="Batch id e.g. batch_001")
 def ingest(agent: str, batch: str) -> None:
     """Ingest raw documents from config sources."""
+    from maxxdata.stages.ingest import run_ingest
+
     meta = run_ingest(agent, batch)
     console.print(f"[green]Ingested {meta['doc_count']} docs[/green] (errors: {len(meta.get('errors', []))})")
 
@@ -39,6 +30,8 @@ def ingest(agent: str, batch: str) -> None:
 @click.option("--batch", required=True)
 def clean(agent: str, batch: str) -> None:
     """Clean and deduplicate raw documents."""
+    from maxxdata.stages.clean import run_clean
+
     meta = run_clean(agent, batch)
     console.print(
         f"[green]Cleaned[/green] {meta['out_count']}/{meta['in_count']} "
@@ -51,6 +44,8 @@ def clean(agent: str, batch: str) -> None:
 @click.option("--batch", required=True)
 def validate(agent: str, batch: str) -> None:
     """Validate cleaned documents."""
+    from maxxdata.stages.validate import run_validate
+
     meta = run_validate(agent, batch)
     console.print(
         f"[green]Validated[/green] {meta['validated_count']} "
@@ -64,6 +59,8 @@ def validate(agent: str, batch: str) -> None:
 @click.option("--note", default="", help="Approval note")
 def approve(agent: str, batch: str, note: str) -> None:
     """Approve batch after reviewing rejects (required for chunk-rag, label, promote)."""
+    from maxxdata.stages.approve import run_approve
+
     result = run_approve(agent, batch, note)
     console.print(f"[green]Approved[/green] -> {result['flag']}")
 
@@ -73,6 +70,8 @@ def approve(agent: str, batch: str, note: str) -> None:
 @click.option("--batch", required=True)
 def chunk_rag_cmd(agent: str, batch: str) -> None:
     """Build RAG chunks (requires approve)."""
+    from maxxdata.stages.chunk_rag import run_chunk_rag
+
     meta = run_chunk_rag(agent, batch)
     console.print(f"[green]RAG chunks[/green] {meta['chunk_count']} -> {meta['path']}")
 
@@ -88,6 +87,8 @@ def chunk_rag_cmd(agent: str, batch: str) -> None:
 @click.option("--max-docs", default=None, type=int, help="Limit docs for LLM labeling")
 def label(agent: str, batch: str, types: str, max_docs: int | None) -> None:
     """Generate FT drafts via DeepSeek (requires approve)."""
+    from maxxdata.stages.label import run_label
+
     type_list = [t.strip() for t in types.split(",") if t.strip()]
     meta = run_label(agent, batch, types=type_list, max_docs=max_docs)
     console.print(
@@ -103,6 +104,8 @@ def label(agent: str, batch: str, types: str, max_docs: int | None) -> None:
 @click.option("--version", required=True, help="Version tag e.g. 2026.05.29.1")
 def promote(agent: str, batch: str, version: str) -> None:
     """Promote serve-bound to data/serve/<agent>/<product>/<version>/."""
+    from maxxdata.stages.promote import run_promote
+
     result = run_promote(agent, batch, version)
     for product, path in result.items():
         console.print(f"[green]Promoted {product}[/green] -> {path}")
@@ -122,6 +125,15 @@ def run_pipeline(
     max_docs: int,
 ) -> None:
     """Run full pipeline through promote (auto-approves — review rejects first in production)."""
+    from maxxdata.stages.approve import run_approve
+    from maxxdata.stages.chunk_rag import run_chunk_rag
+    from maxxdata.stages.clean import run_clean
+    from maxxdata.stages.ingest import run_ingest
+    from maxxdata.stages.inventory import run_inventory_status
+    from maxxdata.stages.label import run_label
+    from maxxdata.stages.promote import run_promote
+    from maxxdata.stages.validate import run_validate
+
     meta = run_ingest(agent, batch)
     console.print(f"[green]Ingested {meta['doc_count']} docs[/green]")
     meta = run_clean(agent, batch)
@@ -146,6 +158,8 @@ def run_pipeline(
 @click.option("--batch", required=True)
 def seed_if(agent: str, batch: str) -> None:
     """Load instruction-following seed JSONL (no API). Requires approve."""
+    from maxxdata.stages.seed_ft import run_seed_ft
+
     counts = run_seed_ft(agent, batch, types=["instructions"])
     console.print(f"[green]Seeded IF[/green] instructions={counts.get('instructions', 0)}")
     console.print("Run: python -m maxxdata promote --agent ... --version ...")
@@ -156,6 +170,8 @@ def seed_if(agent: str, batch: str) -> None:
 @click.option("--version", required=True, help="Promoted version under data/serve/")
 def export_hf(agent: str, version: str) -> None:
     """Export each serve file to exports/hf/<agent>-<type>-<version>/ for HF upload."""
+    from maxxdata.stages.export_hf import run_export_hf
+
     folders = run_export_hf(agent, version)
     if not folders:
         console.print("[yellow]Nothing to export. Run promote first.[/yellow]")
@@ -172,6 +188,8 @@ def inventory() -> None:
 @inventory.command("status")
 def inventory_status() -> None:
     """Show catalog and served datasets."""
+    from maxxdata.stages.inventory import run_inventory_status
+
     run_inventory_status()
 
 

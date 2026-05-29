@@ -73,6 +73,8 @@ copy .env.example .env
 # Edit .env and set DEEPSEEK_API_KEY=sk-...  (only needed for `label`)
 ```
 
+**Important:** Always activate `.venv` before running commands. If you see `No module named 'pandas'`, you are using system Python — run `pip install -e .` inside the venv.
+
 ### macOS / Linux
 
 ```bash
