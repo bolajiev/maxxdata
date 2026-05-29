@@ -115,8 +115,9 @@ You control every source. Nothing is scraped until `fetch_urls: true` and URLs a
 
 More detail: [config/AGENTS.md](config/AGENTS.md).
 
-**Coding sources (default):** [DevDocs](https://devdocs.io/) (15 languages), [MDN](https://developer.mozilla.org/), Python docs — see `config/sources.coding.yaml`.  
-**Roadmap** (LeetCode, Exercism, GitHub Issues/PRs, Stack Overflow dump): [config/SOURCES_ROADMAP.md](config/SOURCES_ROADMAP.md).
+**Coding V1 sources:** Python, JS/TS, Node, Next.js, Docker, FastAPI, Git, MDN (+ more in v2) — `config/sources.coding.yaml`.  
+**Research V1 sources:** EPA, NASA, CDC, WHO, Our World in Data, methods — `config/sources.research.yaml`.  
+**Roadmap** (LeetCode, Exercism, GitHub, Stack Overflow dump): [config/SOURCES_ROADMAP.md](config/SOURCES_ROADMAP.md).
 
 ---
 

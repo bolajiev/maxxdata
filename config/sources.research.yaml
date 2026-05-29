@@ -1,4 +1,5 @@
-# Research agent sources (separate from coding — separate HF datasets).
+# Maxx research agent — V1 sources (expand in v2)
+# Separate HF datasets from coding — never mix agents
 
 fetch_urls: true
 
@@ -6,9 +7,31 @@ local_paths:
   - research/articles
 
 urls:
+  # Climate & environment (US / global public agencies)
   - https://www.epa.gov/heatislands
-  # Add more EPA/Wikipedia URLs if fetch works on your network
+  - https://www.epa.gov/climatechange
+  - https://climate.nasa.gov/
+  - https://science.nasa.gov/climate-change/
+  - https://www.cdc.gov/climateandhealth/effects/index.htm
+
+  # Health & policy
+  - https://www.who.int/health-topics/climate-change
+  - https://www.nlm.nih.gov/medlineplus/evaluatinghealthinformation.html
+
+  # Data-driven research writing
+  - https://ourworldindata.org/co2-and-greenhouse-gas-emissions
+  - https://ourworldindata.org/energy
+
+  # Methods & literacy (encyclopedic — cite carefully)
+  - https://en.wikipedia.org/wiki/Scientific_method
+  - https://en.wikipedia.org/wiki/Peer_review
+  - https://en.wikipedia.org/wiki/Systematic_review
 
 allowed_domains:
   - epa.gov
+  - nasa.gov
+  - cdc.gov
+  - who.int
+  - nlm.nih.gov
+  - ourworldindata.org
   - wikipedia.org

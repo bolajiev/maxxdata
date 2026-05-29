@@ -1,57 +1,76 @@
-# Maxx agent — coding sources (edit freely)
-# Active ingest: local_paths + urls (when fetch_urls: true)
-# See SOURCES_ROADMAP.md for LeetCode, Exercism, GitHub PRs, Stack Overflow dump
+# Maxx agent — coding V1 sources (more stacks in v2)
+# See SOURCES_ROADMAP.md for LeetCode, Exercism, GitHub, Stack Overflow dump
 
 fetch_urls: true
 
 local_paths:
   - coding/docs
-  - coding/devdocs   # optional: DevDocs offline exports (see samples/coding/devdocs/README.md)
+  - coding/devdocs   # DevDocs offline exports (recommended for devdocs.io)
 
-# --- DevDocs (https://devdocs.io/) — top 15 language doc hubs ---
+# V1 DevDocs hubs (offline packs) — no php / cpp / csharp
 devdocs_languages:
   - python
   - javascript
   - typescript
+  - node
   - java
   - c
-  - cpp
-  - csharp
   - go
   - rust
   - ruby
-  - php
   - swift
   - kotlin
   - sql
   - bash
+  - docker
+  - git
 
 urls:
-  # DevDocs — one entry point per language (expands your corpus beyond python.org only)
+  # DevDocs entry points (use offline export for real text; URLs for catalog)
   - https://devdocs.io/python/
   - https://devdocs.io/javascript/
   - https://devdocs.io/typescript/
+  - https://devdocs.io/node/
   - https://devdocs.io/java/
   - https://devdocs.io/c/
-  - https://devdocs.io/cpp/
-  - https://devdocs.io/csharp/
   - https://devdocs.io/go/
   - https://devdocs.io/rust/
   - https://devdocs.io/ruby/
-  - https://devdocs.io/php/
   - https://devdocs.io/swift/
   - https://devdocs.io/kotlin/
   - https://devdocs.io/sql/
   - https://devdocs.io/bash/
+  - https://devdocs.io/docker/
+  - https://devdocs.io/git/
 
-  # MDN — web platform (pairs well with JS/TS from DevDocs)
+  # Node.js (official — works with plain fetch)
+  - https://nodejs.org/en/docs/guides/getting-started-guide
+  - https://nodejs.org/api/
+
+  # Next.js
+  - https://nextjs.org/docs
+  - https://nextjs.org/docs/app/building-your-application/routing
+  - https://nextjs.org/docs/app/building-your-application/data-fetching
+
+  # Docker
+  - https://docs.docker.com/get-started/
+  - https://docs.docker.com/guides/
+
+  # FastAPI
+  - https://fastapi.tiangolo.com/
+  - https://fastapi.tiangolo.com/tutorial/
+  - https://fastapi.tiangolo.com/tutorial/first-steps/
+
+  # Git
+  - https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
+  - https://git-scm.com/docs/git-commit
+
+  # MDN — web (JS/TS/Next ecosystem)
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
-  - https://developer.mozilla.org/en-US/docs/Web/HTML
-  - https://developer.mozilla.org/en-US/docs/Web/CSS
-  - https://developer.mozilla.org/en-US/docs/Web/API
+  - https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 
-  # Python official (deep tutorials)
+  # Python official
   - https://docs.python.org/3/tutorial/introduction.html
   - https://docs.python.org/3/tutorial/controlflow.html
   - https://docs.python.org/3/tutorial/classes.html
@@ -62,9 +81,8 @@ allowed_domains:
   - devdocs.io
   - developer.mozilla.org
   - docs.python.org
-
-# NOT scraped by default (ToS / API / dump) — see SOURCES_ROADMAP.md
-# leetcode: use licensed lists or your own problem writeups locally
-# exercism: https://exercism.org/docs/building (API)
-# github_issues_prs: needs GITHUB_TOKEN + ingest module
-# stackoverflow: use Archive.org Stack Exchange CC dump → local_paths
+  - nodejs.org
+  - nextjs.org
+  - docs.docker.com
+  - fastapi.tiangolo.com
+  - git-scm.com

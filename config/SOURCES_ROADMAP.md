@@ -6,9 +6,11 @@ Configured in `sources.coding.yaml`:
 
 | Source | Role |
 |--------|------|
-| [DevDocs](https://devdocs.io/) | 15 language hubs — **see DevDocs note below** |
-| [MDN](https://developer.mozilla.org/) | Web JS/HTML/CSS/API |
+| [DevDocs](https://devdocs.io/) | V1 hubs (no php/cpp/csharp) — **see DevDocs note below** |
+| **Node.js, Next.js, Docker, FastAPI, Git** | Official docs + DevDocs where listed |
+| [MDN](https://developer.mozilla.org/) | Web JS / Fetch API |
 | [Python docs](https://docs.python.org/3/) | Official tutorials & stdlib |
+| **Research V1** | EPA, NASA, CDC, WHO, Our World in Data, methods (see `sources.research.yaml`) |
 
 Run: `python -m maxxdata ingest --agent coding --batch batch_XXX`
 
