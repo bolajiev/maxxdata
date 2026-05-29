@@ -2,7 +2,7 @@
 
 | Agent | Sources file | Hugging Face prefix (export) |
 |-------|--------------|------------------------------|
-| **coding** | `sources.coding.yaml` | `coding-rag`, `coding-ft-sft`, … |
+| **coding** (Maxx coder) | `sources.coding.yaml` — DevDocs, MDN, Python | `maxx-coding-rag`, `maxx-coding-ft-sft`, … |
 | **research** | `sources.research.yaml` | `research-rag`, `research-ft-sft`, … |
 v1 ships **coding + research only**. No cybersec config needed.
 

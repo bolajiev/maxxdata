@@ -1,6 +1,8 @@
 # Maxxdata
 
-**Maxxdata** is a Python pipeline that turns web pages and local documents into **versioned, upload-ready datasets** for agentic AI: RAG chunks, instruction-following (IF), tool-calling traces, multi-turn trajectories, and multi-agent examples.
+**Maxxdata** is the dataset pipeline for the **Maxx** agent family. The name fits: *Maxx* = agent, *Maxxdata* = curated data that powers it (same brand, clear role).
+
+**Maxxdata** turns web pages and local documents into **versioned, upload-ready datasets** for agentic AI: RAG chunks, instruction-following (IF), tool-calling traces, multi-turn trajectories, and multi-agent examples.
 
 Built for two agent domains out of the box:
 
@@ -112,6 +114,9 @@ allowed_domains:
 You control every source. Nothing is scraped until `fetch_urls: true` and URLs are listed.
 
 More detail: [config/AGENTS.md](config/AGENTS.md).
+
+**Coding sources (default):** [DevDocs](https://devdocs.io/) (15 languages), [MDN](https://developer.mozilla.org/), Python docs — see `config/sources.coding.yaml`.  
+**Roadmap** (LeetCode, Exercism, GitHub Issues/PRs, Stack Overflow dump): [config/SOURCES_ROADMAP.md](config/SOURCES_ROADMAP.md).
 
 ---
 

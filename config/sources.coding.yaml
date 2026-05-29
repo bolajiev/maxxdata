@@ -1,20 +1,70 @@
-# YOU edit this file. Each agent has its own sources file.
-# First run: local samples + Python docs (fetch_urls: true).
+# Maxx agent — coding sources (edit freely)
+# Active ingest: local_paths + urls (when fetch_urls: true)
+# See SOURCES_ROADMAP.md for LeetCode, Exercism, GitHub PRs, Stack Overflow dump
 
 fetch_urls: true
 
 local_paths:
   - coding/docs
+  - coding/devdocs   # optional: DevDocs offline exports (see samples/coding/devdocs/README.md)
+
+# --- DevDocs (https://devdocs.io/) — top 15 language doc hubs ---
+devdocs_languages:
+  - python
+  - javascript
+  - typescript
+  - java
+  - c
+  - cpp
+  - csharp
+  - go
+  - rust
+  - ruby
+  - php
+  - swift
+  - kotlin
+  - sql
+  - bash
 
 urls:
+  # DevDocs — one entry point per language (expands your corpus beyond python.org only)
+  - https://devdocs.io/python/
+  - https://devdocs.io/javascript/
+  - https://devdocs.io/typescript/
+  - https://devdocs.io/java/
+  - https://devdocs.io/c/
+  - https://devdocs.io/cpp/
+  - https://devdocs.io/csharp/
+  - https://devdocs.io/go/
+  - https://devdocs.io/rust/
+  - https://devdocs.io/ruby/
+  - https://devdocs.io/php/
+  - https://devdocs.io/swift/
+  - https://devdocs.io/kotlin/
+  - https://devdocs.io/sql/
+  - https://devdocs.io/bash/
+
+  # MDN — web platform (pairs well with JS/TS from DevDocs)
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+  - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+  - https://developer.mozilla.org/en-US/docs/Web/HTML
+  - https://developer.mozilla.org/en-US/docs/Web/CSS
+  - https://developer.mozilla.org/en-US/docs/Web/API
+
+  # Python official (deep tutorials)
   - https://docs.python.org/3/tutorial/introduction.html
-  - https://docs.python.org/3/tutorial/interpreter.html
   - https://docs.python.org/3/tutorial/controlflow.html
-  - https://docs.python.org/3/tutorial/datastructures.html
-  - https://docs.python.org/3/tutorial/errors.html
   - https://docs.python.org/3/tutorial/classes.html
+  - https://docs.python.org/3/tutorial/errors.html
   - https://docs.python.org/3/library/functions.html
-  - https://docs.python.org/3/library/venv.html
 
 allowed_domains:
+  - devdocs.io
+  - developer.mozilla.org
   - docs.python.org
+
+# NOT scraped by default (ToS / API / dump) — see SOURCES_ROADMAP.md
+# leetcode: use licensed lists or your own problem writeups locally
+# exercism: https://exercism.org/docs/building (API)
+# github_issues_prs: needs GITHUB_TOKEN + ingest module
+# stackoverflow: use Archive.org Stack Exchange CC dump → local_paths

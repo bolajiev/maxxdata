@@ -52,6 +52,8 @@ def _fetch_url(url: str, agent: str, timeout: float = 30.0) -> dict[str, Any] | 
     )
     if not extracted or len(extracted) < 100:
         return None
+    if "requires javascript" in extracted.lower()[:500]:
+        return None
     title = urlparse(url).path.rstrip("/").split("/")[-1] or url
     return {
         "doc_id": _doc_id(url),
