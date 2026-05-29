@@ -1,0 +1,30 @@
+agents:
+  coding:
+    min_chars: 150
+    allowed_langs: ["en"]
+    max_boilerplate: 3
+    chunk_size: 500
+    chunk_overlap: 80
+    label_max_docs: 5
+    label_types:
+      - sft
+      - instructions
+      - tool_calling
+      - trajectories
+      - multi_agent
+    near_dup_threshold: 3
+
+  research:
+    min_chars: 200
+    allowed_langs: ["en"]
+    max_boilerplate: 2
+    chunk_size: 600
+    chunk_overlap: 100
+    label_max_docs: 5
+    label_types:
+      - sft
+      - instructions
+      - tool_calling
+      - trajectories
+      - multi_agent
+    near_dup_threshold: 3

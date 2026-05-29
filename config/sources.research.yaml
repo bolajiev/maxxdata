@@ -1,0 +1,14 @@
+# Research agent sources (separate from coding — separate HF datasets).
+
+fetch_urls: true
+
+local_paths:
+  - research/articles
+
+urls:
+  - https://www.epa.gov/heatislands
+  # Add more EPA/Wikipedia URLs if fetch works on your network
+
+allowed_domains:
+  - epa.gov
+  - wikipedia.org

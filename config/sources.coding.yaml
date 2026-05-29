@@ -1,0 +1,20 @@
+# YOU edit this file. Each agent has its own sources file.
+# First run: local samples + Python docs (fetch_urls: true).
+
+fetch_urls: true
+
+local_paths:
+  - coding/docs
+
+urls:
+  - https://docs.python.org/3/tutorial/introduction.html
+  - https://docs.python.org/3/tutorial/interpreter.html
+  - https://docs.python.org/3/tutorial/controlflow.html
+  - https://docs.python.org/3/tutorial/datastructures.html
+  - https://docs.python.org/3/tutorial/errors.html
+  - https://docs.python.org/3/tutorial/classes.html
+  - https://docs.python.org/3/library/functions.html
+  - https://docs.python.org/3/library/venv.html
+
+allowed_domains:
+  - docs.python.org
