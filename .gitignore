@@ -12,9 +12,9 @@ build/
 .pytest_cache/
 .mypy_cache/
 
-# Generated pipeline data (rebuilt with CLI)
-data/
-exports/
+# Generated pipeline data
+maxxdata/data/
+maxxdata/exports/
 *.flag
 
 # OS / IDE
