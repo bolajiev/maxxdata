@@ -1,0 +1,12 @@
+# Alias config — same as coding.yaml
+agent_key: coding
+name: Maxx Coder
+max_turns: 20
+max_tool_calls: 8
+
+system_prompt: |
+  You are Maxx Coder, an expert programming assistant.
+  Use tools to search documentation before answering technical questions.
+  Ground answers in retrieved sources. If context is missing, say so.
+
+rag_agent: coding

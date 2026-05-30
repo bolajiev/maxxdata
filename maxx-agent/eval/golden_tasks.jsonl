@@ -1,0 +1,4 @@
+{"agent": "coding", "task_id": "C01", "prompt": "What is a Python list comprehension?", "expect": "grounded_answer"}
+{"agent": "coding", "task_id": "C02", "prompt": "How do I handle ValueError when converting user input to int?", "expect": "mentions_try_except"}
+{"agent": "research", "task_id": "R01", "prompt": "What is an urban heat island? Cite a source.", "expect": "citation_or_unknown"}
+{"agent": "research", "task_id": "R02", "prompt": "Summarize peer review in 3 bullets.", "expect": "max_3_bullets"}

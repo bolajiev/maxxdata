@@ -1,30 +1,56 @@
-# Maxx-agent (runtime) — planned
+# Maxx-agent (runtime)
 
-Runs the **Maxx** agent loop: RAG + tools + memory + multi-agent routing.
+Runs **Maxx** — agent loop with **RAG**, **tools**, and **memory**.  
+Uses **DeepSeek** API. Training data can come from **public Hugging Face datasets** (no scraping required).
 
-**Not built yet.** Datasets come from [../maxxdata/](../maxxdata/).
+Maxxdata (sibling folder) = custom datasets. **Pause maxxdata** and use this for agent work.
 
-## Depends on
+## Install
 
-1. Promoted RAG: `maxxdata/data/serve/<agent>/rag/<version>/chunks.parquet`
-2. FT optional: `maxxdata/data/serve/<agent>/ft/<version>/*.jsonl`
-3. [Platform docs](../docs/platform/) — especially [tools before fine-tuning](../docs/platform/06-tools-before-finetuning.md)
+```powershell
+cd "c:\Users\user\Desktop\maxxdata guru"
+.\.venv\Scripts\Activate.ps1
+pip install -e maxx-agent
 
-## Planned modules
+# .env at repo root:
+# DEEPSEEK_API_KEY=sk-...
+```
 
-| Module | Doc |
-|--------|-----|
-| Agent loop | [01-agent-runtime.md](../docs/platform/01-agent-runtime.md) |
-| RAG wire-up | [02-rag-integration.md](../docs/platform/02-rag-integration.md) |
-| Tools + policies | [03-tools-and-policies.md](../docs/platform/03-tools-and-policies.md) |
-| Memory | [04-memory.md](../docs/platform/04-memory.md) |
-| Multi-agent | [05-multi-agent.md](../docs/platform/05-multi-agent.md) |
+## Chat (needs RAG from maxxdata once)
 
-## Status
+```powershell
+# Optional: promote batch_v1 first in maxxdata/
+maxx-agent status --agent coding
+maxx-agent chat --agent coding "How does FastAPI dependency injection work?"
+maxx-agent chat --agent research "What does EPA say about heat islands? Cite sources."
+```
 
-- [ ] Phase 1: DeepSeek + `search_docs` + one coding golden eval
-- [ ] Phase 2: Research agent + citations
-- [ ] Phase 3: Orchestrator (coder + researcher)
-- [ ] Phase 4: Session memory + logging
+## Public datasets for training
 
-Switch to **Agent mode** in Cursor to scaffold `maxx-agent/` code when ready.
+```powershell
+maxx-agent datasets list
+maxx-agent datasets pull --hf glaiveai/glaive-function-calling-v2 --limit 200
+maxx-agent datasets pull --hf rajpurkar/squad --limit 500
+```
+
+Output: `maxx-agent/data/public/*.jsonl`  
+Guide: [docs/PUBLIC_DATASETS.md](docs/PUBLIC_DATASETS.md)
+
+## Architecture
+
+| Module | Role |
+|--------|------|
+| `orchestrator.py` | Plan → tool calls → answer |
+| `rag/retriever.py` | Search `maxxdata/data/serve/.../chunks.parquet` |
+| `tools/registry.py` | `search_docs`, `read_file`, `cite_source` |
+| `memory/session.py` | Chat history |
+| `public_datasets.py` | HF `datasets` pull |
+
+Platform docs: [../docs/platform/](../docs/platform/)
+
+## Build order
+
+1. **maxx-agent chat** works with RAG  
+2. **Pull public JSONL** for fine-tune  
+3. Fine-tune (optional)  
+4. Return to maxxdata only when you need more **custom** docs

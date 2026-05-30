@@ -15,6 +15,7 @@ build/
 # Generated pipeline data
 maxxdata/data/
 maxxdata/exports/
+maxx-agent/data/
 *.flag
 
 # OS / IDE

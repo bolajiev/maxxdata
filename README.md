@@ -5,10 +5,21 @@ Monorepo for the **Maxx** agentic AI family.
 | Folder | Purpose |
 |--------|---------|
 | **[maxxdata/](maxxdata/)** | Dataset pipeline — scrape, clean, RAG, FT, Hugging Face export |
-| **[maxx-agent/](maxx-agent/)** | Agent runtime (planned) — tools, RAG retrieval, memory, multi-agent |
+| **[maxx-agent/](maxx-agent/)** | **Active** — chat, tools, RAG, public HF dataset pull |
 | **[docs/platform/](docs/platform/)** | Architecture & build order (read before fine-tuning) |
 
-## Quick start (data pipeline)
+## Quick start (agent — current focus)
+
+```powershell
+pip install -e maxx-agent
+maxx-agent status --agent coding
+maxx-agent chat --agent coding "Explain Python try/except"
+maxx-agent datasets list
+```
+
+See [maxx-agent/README.md](maxx-agent/README.md) and [maxx-agent/docs/PUBLIC_DATASETS.md](maxx-agent/docs/PUBLIC_DATASETS.md).
+
+## Quick start (data pipeline — paused)
 
 ```powershell
 cd maxxdata
